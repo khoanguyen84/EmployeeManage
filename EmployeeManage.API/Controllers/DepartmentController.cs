@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace EmployeeManage.API.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class DepartmentController : ControllerBase
