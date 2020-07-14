@@ -24,6 +24,10 @@ namespace EmployeeManage.API.Controllers
             this.departmentService = departmentService;
         }
 
+        /// <summary>
+        /// Get all department in DB
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("/api/department/gets")]
         public IEnumerable<Department> Gets()
