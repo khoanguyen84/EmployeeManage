@@ -14,14 +14,14 @@ namespace EmployeeManage.BAL
         {
             this.departmentRepository = departmentRepository;
         }
-        public bool Delete(int departmentId)
+        public DeleteDepartmentResult Delete(int departmentId)
         {
-            throw new NotImplementedException();
+            return departmentRepository.Delete(departmentId);
         }
 
         public Department Get(int departmentId)
         {
-            throw new NotImplementedException();
+            return departmentRepository.Get(departmentId);
         }
 
         public IEnumerable<Department> Gets()
@@ -29,9 +29,9 @@ namespace EmployeeManage.BAL
             return departmentRepository.Gets();
         }
 
-        public int Save(Department request)
+        public SaveDepartmentResult Save(Department request)
         {
-            throw new NotImplementedException();
+            return departmentRepository.Save(request);
         }
     }
 }

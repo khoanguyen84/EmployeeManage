@@ -37,5 +37,31 @@ namespace EmployeeManage.API.Controllers
         {
             return departmentService.Gets();
         }
+
+        /// <summary>
+        /// Get department by departmentid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/department/get/{id}")]
+        public Department Get(int id)
+        {
+            return departmentService.Get(id);
+        }
+
+        [HttpPost]
+        [Route("/api/department/save")]
+        public SaveDepartmentResult Save(Department request)
+        {
+            return departmentService.Save(request);
+        }
+
+        [HttpDelete]
+        [Route("/api/department/delete/{id}")]
+        public DeleteDepartmentResult Delete(int id)
+        {
+            return departmentService.Delete(id);
+        }
     }
 }

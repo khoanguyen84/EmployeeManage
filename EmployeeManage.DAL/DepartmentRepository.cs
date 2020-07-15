@@ -5,19 +5,30 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace EmployeeManage.DAL
 {
     public class DepartmentRepository : BaseRepository, IDepartmentRepository
     {
-        public bool Delete(int departmentId)
+        public DeleteDepartmentResult Delete(int departmentId)
         {
-            throw new NotImplementedException();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@DepartmentId", departmentId);
+            return SqlMapper.Query<DeleteDepartmentResult>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_DeleteDepartment",
+                            commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
 
         public Department Get(int departmentId)
         {
-            throw new NotImplementedException();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@DepartmentId", departmentId);
+            return SqlMapper.Query<Department>(cnn: conn,
+                             param: parameters,
+                            sql: "sp_GetDepartment", 
+                            commandType: CommandType.StoredProcedure).FirstOrDefault();
         }
 
         public IEnumerable<Department> Gets()
@@ -27,9 +38,25 @@ namespace EmployeeManage.DAL
             return SqlMapper.Query<Department>(conn, "sp_GetDepartments", CommandType.StoredProcedure);
         }
 
-        public int Save(Department request)
+        public SaveDepartmentResult Save(Department request)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("@DepartmentId", request.DepartmentId);
+                parameters.Add("@DeparmentName", request.DepartmentName);
+                return SqlMapper.Query<SaveDepartmentResult>(cnn: conn, sql: "sp_SaveDepartment",
+                                            param: parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                return new SaveDepartmentResult()
+                {
+                    DepartmentId = 0,
+                    Message = "Something went wrong, please try again"
+                };
+            }
+
         }
     }
 }

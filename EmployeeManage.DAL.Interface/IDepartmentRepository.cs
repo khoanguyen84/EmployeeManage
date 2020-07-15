@@ -8,7 +8,7 @@ namespace EmployeeManage.DAL.Interface
     {
         IEnumerable<Department> Gets();
         Department Get(int departmentId);
-        bool Delete(int departmentId);
-        int Save(Department request);
+        DeleteDepartmentResult Delete(int departmentId);
+        SaveDepartmentResult Save(Department request);
     }
 }

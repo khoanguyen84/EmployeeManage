@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EmployeeManage.BAL.Interface\EmployeeManage.BAL.Interface.csproj" />
     <ProjectReference Include="..\EmployeeManage.BAL\EmployeeManage.BAL.csproj" />
     <ProjectReference Include="..\EmployeeManage.DAL.Interface\EmployeeManage.DAL.Interface.csproj" />
