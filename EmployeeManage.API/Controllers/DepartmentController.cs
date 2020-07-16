@@ -33,9 +33,9 @@ namespace EmployeeManage.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/department/gets")]
-        public IEnumerable<Department> Gets()
+        public async Task<IEnumerable<Department>> Gets()
         {
-            return departmentService.Gets();
+            return await departmentService.Gets();
         }
 
         /// <summary>
@@ -45,23 +45,30 @@ namespace EmployeeManage.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/department/get/{id}")]
-        public Department Get(int id)
+        public async Task<Department> Get(int id)
         {
-            return departmentService.Get(id);
+            return await departmentService.Get(id);
         }
 
         [HttpPost]
         [Route("/api/department/save")]
-        public SaveDepartmentResult Save(Department request)
+        public async Task<SaveDepartmentResult> Save(Department request)
         {
-            return departmentService.Save(request);
+            return await departmentService.Save(request);
         }
 
         [HttpDelete]
         [Route("/api/department/delete/{id}")]
-        public DeleteDepartmentResult Delete(int id)
+        public async Task<DeleteDepartmentResult> Delete(int id)
         {
-            return departmentService.Delete(id);
+            return await departmentService.Delete(id);
+        }
+
+        [HttpGet("/api/department/search")]
+        public async Task<IEnumerable<Department>> Search(string keyword)
+        {
+            //keyword = string.IsNullOrEmpty(keyword) ? string.Empty : keyword;
+            return  await departmentService.Search(keyword);
         }
     }
 }

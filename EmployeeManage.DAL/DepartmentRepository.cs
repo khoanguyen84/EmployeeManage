@@ -6,47 +6,50 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace EmployeeManage.DAL
 {
     public class DepartmentRepository : BaseRepository, IDepartmentRepository
     {
-        public DeleteDepartmentResult Delete(int departmentId)
+        public async Task<DeleteDepartmentResult> Delete(int departmentId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@DepartmentId", departmentId);
-            return SqlMapper.Query<DeleteDepartmentResult>(cnn: conn,
+            return await SqlMapper.QueryFirstOrDefaultAsync<DeleteDepartmentResult>(cnn: conn,
                              param: parameters,
                             sql: "sp_DeleteDepartment",
-                            commandType: CommandType.StoredProcedure).FirstOrDefault();
+                            commandType: CommandType.StoredProcedure);
         }
 
-        public Department Get(int departmentId)
+        public async Task<Department> Get(int departmentId)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@DepartmentId", departmentId);
-            return SqlMapper.Query<Department>(cnn: conn,
+            return (await SqlMapper.QueryFirstOrDefaultAsync<Department>(cnn: conn,
                              param: parameters,
                             sql: "sp_GetDepartment", 
-                            commandType: CommandType.StoredProcedure).FirstOrDefault();
+                            commandType: CommandType.StoredProcedure));
         }
 
-        public IEnumerable<Department> Gets()
+        public async Task<IEnumerable<Department>> Gets()
         {
             //string sql = @"SELECT [DepartmentId] ,[DepartmentName]  FROM [dbo].[Department]";
             //return SqlMapper.Query<Department>(conn, sql, CommandType.Text);
-            return SqlMapper.Query<Department>(conn, "sp_GetDepartments", CommandType.StoredProcedure);
+            return await SqlMapper.QueryAsync<Department>(conn, "sp_GetDepartments", CommandType.StoredProcedure);
         }
 
-        public SaveDepartmentResult Save(Department request)
+        public async Task<SaveDepartmentResult> Save(Department request)
         {
             try
             {
                 DynamicParameters parameters = new DynamicParameters();
                 parameters.Add("@DepartmentId", request.DepartmentId);
                 parameters.Add("@DeparmentName", request.DepartmentName);
-                return SqlMapper.Query<SaveDepartmentResult>(cnn: conn, sql: "sp_SaveDepartment",
-                                            param: parameters, commandType: CommandType.StoredProcedure).FirstOrDefault();
+                return (await SqlMapper.QueryFirstOrDefaultAsync<SaveDepartmentResult>(cnn: conn, 
+                                            sql: "sp_SaveDepartment",
+                                            param: parameters, 
+                                            commandType: CommandType.StoredProcedure));
             }
             catch (Exception ex)
             {
@@ -57,6 +60,15 @@ namespace EmployeeManage.DAL
                 };
             }
 
+        }
+
+        public async Task<IEnumerable<Department>> Search(string keyword)
+        {
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@keyword", keyword);
+            return await SqlMapper.QueryAsync<Department>(cnn: conn, sql: "sp_SearchDepartment",
+                                               param: parameters,
+                                               commandType: CommandType.StoredProcedure);
         }
     }
 }

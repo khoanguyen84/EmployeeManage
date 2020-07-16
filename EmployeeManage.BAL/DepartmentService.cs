@@ -3,6 +3,7 @@ using EmployeeManage.DAL.Interface;
 using EmployeeManage.Domain.Responses;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EmployeeManage.BAL
 {
@@ -14,24 +15,29 @@ namespace EmployeeManage.BAL
         {
             this.departmentRepository = departmentRepository;
         }
-        public DeleteDepartmentResult Delete(int departmentId)
+        public async Task<DeleteDepartmentResult> Delete(int departmentId)
         {
-            return departmentRepository.Delete(departmentId);
+            return await departmentRepository.Delete(departmentId);
         }
 
-        public Department Get(int departmentId)
+        public async Task<Department> Get(int departmentId)
         {
-            return departmentRepository.Get(departmentId);
+            return await departmentRepository.Get(departmentId);
         }
 
-        public IEnumerable<Department> Gets()
+        public async Task<IEnumerable<Department>> Gets()
         {
-            return departmentRepository.Gets();
+            return await departmentRepository.Gets();
         }
 
-        public SaveDepartmentResult Save(Department request)
+        public async Task<SaveDepartmentResult> Save(Department request)
         {
-            return departmentRepository.Save(request);
+            return await departmentRepository.Save(request);
+        }
+
+        public async Task<IEnumerable<Department>> Search(string keyword)
+        {
+            return await departmentRepository.Search(keyword);
         }
     }
 }
