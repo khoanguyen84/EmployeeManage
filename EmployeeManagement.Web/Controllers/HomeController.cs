@@ -32,32 +32,37 @@ namespace EmployeeManagement.Web.Controllers
         public JsonResult Gets()
         {
             var departments = new List<Department>();
-            var url = $"{Helper.ApiUrl}api/department/gets";
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpWebRequest.Method = "GET";
-            var response = httpWebRequest.GetResponse();
-            {
-                string responseData;
-                Stream responseStream = response.GetResponseStream();
-                try
-                {
-                    StreamReader streamReader = new StreamReader(responseStream);
-                    try
-                    {
-                        responseData = streamReader.ReadToEnd();
-                    }
-                    finally
-                    {
-                        ((IDisposable)streamReader).Dispose();
-                    }
-                }
-                finally
-                {
-                    ((IDisposable)responseStream).Dispose();
-                }
-                departments = JsonConvert.DeserializeObject<List<Department>>(responseData);
-            }
+            departments = ApiHelper<List<Department>>.HttpGetAsync($"{Helper.ApiUrl}api/department/gets");
             return Json(new { departments });
+        }
+
+        public JsonResult Delete(int id)
+        {
+            var result = new DeleteDepartmentResult();
+            result = ApiHelper<DeleteDepartmentResult>.HttpGetAsync(
+                                                    $"{Helper.ApiUrl}api/department/delete/{id}",
+                                                    "DELETE"
+                                                );
+            return Json(new { result });
+        }
+
+        public JsonResult Get(int id)
+        {
+            var result = new Department();
+            result = ApiHelper<Department>.HttpGetAsync(
+                                                    $"{Helper.ApiUrl}api/department/get/{id}"
+                                                );
+            return Json(new { result });
+        }
+
+        public JsonResult Save([FromBody] Department model)
+        {
+            var result = new SaveDepartmentResult();
+            result = ApiHelper<SaveDepartmentResult>.HttpPostAsync(
+                                                    $"{Helper.ApiUrl}api/department/save",
+                                                    model
+                                                );
+            return Json(new { result });
         }
     }
 }

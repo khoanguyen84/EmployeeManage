@@ -8,5 +8,6 @@ namespace EmployeeManage.Domain.Responses
     {
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
+        public int Employees { get; set; }
     }
 }
