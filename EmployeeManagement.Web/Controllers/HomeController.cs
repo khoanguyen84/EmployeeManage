@@ -36,6 +36,7 @@ namespace EmployeeManagement.Web.Controllers
             return Json(new { departments });
         }
 
+        [Route("/Home/Delete/{id}")]
         public JsonResult Delete(int id)
         {
             var result = new DeleteDepartmentResult();
@@ -46,6 +47,7 @@ namespace EmployeeManagement.Web.Controllers
             return Json(new { result });
         }
 
+        [Route("/Home/Get/{id}")]
         public JsonResult Get(int id)
         {
             var result = new Department();
