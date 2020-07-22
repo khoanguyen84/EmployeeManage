@@ -49,6 +49,9 @@ namespace EmployeeManagement.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "employee",
+                    pattern: "{controller=Employee}/{action=List}/{departId}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

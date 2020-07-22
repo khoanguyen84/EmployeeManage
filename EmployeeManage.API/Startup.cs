@@ -32,6 +32,8 @@ namespace EmployeeManage.API
             services.AddControllers();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddSwaggerGen();
         }
 
