@@ -8,14 +8,14 @@ home.drawTable = function () {
         success: function (data) {
             $('#tbDepart tbody').empty();
             $.each(data.departments, function (i, v) {
-                var emps = v.employees > 0 ?
-                    `<a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a>` :
-                    `${v.employees}`;
+                //var emps = v.employees > 0 ?
+                //    `<a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a>` :
+                //    `${v.employees}`;
                 $('#tbDepart tbody').append(
                     `<tr>
                         <td>${v.departmentId}</td>
                         <td>${v.departmentName}</td>
-                        <td>${emps}</td>
+                        <td><a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a></td>
                         <td>
                             <a href="javascripts:;" class="btn btn-success"
                                        onclick="home.get(${v.departmentId})">Edit</a> 
