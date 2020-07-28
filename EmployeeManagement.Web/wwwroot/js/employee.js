@@ -20,8 +20,8 @@ employee.drawTable = function () {
                         <td><img src='${v.avatarPath}' width='80' height='90'/></td>
                         <td>${v.createdDate}</td>
                         <td>
-                            <a href="javascript:;" onclick="employee.get(${v.employeeId})" class="btn btn-success">Edit</a> 
-                            <a href="javascript:;" onclick="employee.delete(${v.employeeId})" class="btn btn-danger">Remove</a>
+                            <a href="javascript:;" onclick="employee.get(${v.employeeId})" class="item"><i class="zmdi zmdi-edit"></i></a> 
+                            <a href="javascript:;" onclick="employee.delete(${v.employeeId})" class="item"><i class="zmdi zmdi-delete"></i></a>
                         </td>
                     </tr>
                     `
@@ -34,7 +34,7 @@ employee.drawTable = function () {
 
 employee.openAddEditEmployee = function () {
     employee.reset();
-    $('#addEditEmployee').modal('show');
+    $('#addEditEmployee').appendTo("body").modal('show');
 };
 
 
@@ -90,7 +90,7 @@ employee.get = function (id) {
             $('#Avatar').attr("src",data.employee.avatarPath);
 
             $('#addEditEmployee').find('.modal-title').text('Edit Employee');
-            $('#addEditEmployee').modal('show');
+            $('#addEditEmployee').appendTo("body").modal('show');
         }
     });
 }

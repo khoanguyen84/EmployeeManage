@@ -4,31 +4,34 @@
     var department = ViewBag.Department != null ? ViewBag.Department as Department : new Department();
 }
 
-<h6><a href="/">Home</a> &gt; Employees of @department.DepartmentName</h6>
 <div class="row">
+    <h2 class="title-1 m-b-25"><a href="/">Home</a> &gt; Employees of @department.DepartmentName</h2>
     <input hidden id="DepartmentId" value="@department.DepartmentId" />
     <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="btn btn-info" onclick="employee.openAddEditEmployee()">Create</a>
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="employee.openAddEditEmployee()">
+        <i class="zmdi zmdi-plus"></i>Create</a>
+    </div>
+    <div class="table-responsive table--no-card m-b-40">
+        <table id="tbEmployee"  class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>EmployeeId</th>
+                    <th>Employee Name</th>
+                    <th>Date of birth</th>
+                    <th>Gender</th>
+                    <th>Avatar</th>
+                    <th>Created date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </div>
-<table id="tbEmployee" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>EmployeeId</th>
-            <th>Employee Name</th>
-            <th>Date of birth</th>
-            <th>Gender</th>
-            <th>Avatar</th>
-            <th>Created date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-</table>
+
 <!-- Modal -->
-<div id="addEditEmployee" class="modal fade" role="dialog">
+<div id="addEditEmployee" class="modal fade" data-backdrop="false" role="dialog">
         <div class="modal-dialog modal-lg">
             <form id="frmAddEditEmployee">
                 <div class="modal-content">

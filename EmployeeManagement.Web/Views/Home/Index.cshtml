@@ -2,28 +2,32 @@
     ViewData["Title"] = ViewBag.Title;
 }
 
-<h1>Department Management</h1>
 <div class="row">
+    <h2 class="title-1 m-b-25">Department management</h2>
     <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="btn btn-info"
-           onclick="home.openAddEditdepartment()">Create</a>
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="home.openAddEditdepartment()">
+            <i class="zmdi zmdi-plus"></i>Create
+        </a>
+    </div>
+    <div class="table-responsive table--no-card m-b-40">
+        <table id="tbDepart" class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>DepartmentId</th>
+                    <th>Department Name</th>
+                    <th>Employees</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </div>
-<table id="tbDepart" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>DepartmentId</th>
-            <th>Department Name</th>
-            <th>Employees</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
+
 <!-- Modal -->
-<div id="addEditdepartment" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div id="addEditdepartment" class="modal fade" data-backdrop="false" role="dialog" style="z-index:9999">
+    <div class="modal-dialog modal-lg position-sticky">
         <form id="frmAddEditdepartment">
             <!-- Modal content-->
             <div class="modal-content">

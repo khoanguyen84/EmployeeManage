@@ -21,7 +21,30 @@
     {
       "library": "bootbox.js@5.4.0",
       "destination": "wwwroot/lib/bootbox/"
+    },
+    {
+      "library": "font-awesome@5.14.0",
+      "destination": "wwwroot/lib/font-awesome-5/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/lib/select2/"
+    },
+    {
+      "library": "material-design-iconic-font@2.2.0",
+      "destination": "wwwroot/lib/mdi-font/"
+    },
+    {
+      "library": "animsition@4.0.2",
+      "destination": "wwwroot/lib/animsition/"
+    },
+    {
+      "library": "wow@1.1.2",
+      "destination": "wwwroot/lib/wow/"
+    },
+    {
+      "library": "animate.css@4.1.0",
+      "destination": "wwwroot/lib/wow/"
     }
-
   ]
 }
