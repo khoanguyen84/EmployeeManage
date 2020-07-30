@@ -1,11 +1,11 @@
-﻿@using EmployeeManage.Domain.Responses
+﻿@using EmployeeManage.Domain.Responses.Departments
 @{
     ViewData["Title"] = ViewBag.Title;
     var department = ViewBag.Department != null ? ViewBag.Department as Department : new Department();
 }
 
 <div class="row">
-    <h2 class="title-1 m-b-25"><a href="/">Home</a> &gt; Employees of @department.DepartmentName</h2>
+    <h2 class="title-1 m-b-25"><a href="/">Department</a> &gt; @department.DepartmentName</h2>
     <input hidden id="DepartmentId" value="@department.DepartmentId" />
     <div class="col-12 mb-3">
         <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="employee.openAddEditEmployee()">

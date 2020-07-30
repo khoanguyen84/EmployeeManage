@@ -1,7 +1,6 @@
 ﻿using EmployeeManage.BAL.Interface;
 using EmployeeManage.DAL.Interface;
-using EmployeeManage.Domain.Requests;
-using EmployeeManage.Domain.Responses;
+using EmployeeManage.Domain.Requests.Employee;
 using EmployeeManage.Domain.Responses.Employee;
 using System.Collections.Generic;
 using System.Threading.Tasks;

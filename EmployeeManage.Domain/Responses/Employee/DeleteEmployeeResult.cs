@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeManage.Domain.Responses
+namespace EmployeeManage.Domain.Responses.Employee
 {
     public class DeleteEmployeeResult
     {

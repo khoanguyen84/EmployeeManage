@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EmployeeManage.Domain.Requests
+namespace EmployeeManage.Domain.Requests.Employee
 {
     public class SaveEmployeeRequest
     {

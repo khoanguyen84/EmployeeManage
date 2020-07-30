@@ -1,10 +1,11 @@
-﻿using EmployeeManage.Domain.Requests;
+﻿using EmployeeManage.Domain.Requests.Employee;
+using EmployeeManage.Domain.Responses.Departments;
 using EmployeeManage.Domain.Responses;
-using EmployeeManage.Domain.Responses.Employee;
 using EmployeeManage.Web.Ultilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using EmployeeManage.Domain.Responses.Employee;
 
 namespace EmployeeManagement.Web.Controllers
 {

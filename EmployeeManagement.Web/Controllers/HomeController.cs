@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using EmployeeManagement.Web.Models;
-using EmployeeManage.Domain.Responses;
+using EmployeeManage.Domain.Responses.Departments;
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
