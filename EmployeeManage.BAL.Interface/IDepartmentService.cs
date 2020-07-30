@@ -1,4 +1,4 @@
-﻿using EmployeeManage.Domain.Responses;
+﻿using EmployeeManage.Domain.Responses.Departments;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

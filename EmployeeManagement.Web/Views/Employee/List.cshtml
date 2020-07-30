@@ -1,50 +1,90 @@
-﻿@using EmployeeManage.Domain.Responses
+﻿@using EmployeeManage.Domain.Responses.Departments
 @{
     ViewData["Title"] = ViewBag.Title;
     var department = ViewBag.Department != null ? ViewBag.Department as Department : new Department();
 }
 
-    <h6><a href="/">Home</a> &gt; Employees of @department.DepartmentName</h6>
 <div class="row">
+    <h2 class="title-1 m-b-25"><a href="/">Department</a> &gt; @department.DepartmentName</h2>
     <input hidden id="DepartmentId" value="@department.DepartmentId" />
     <div class="col-12 mb-3">
-        <a href="javascript:void(0);" class="btn btn-info">Create</a>
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="employee.openAddEditEmployee()">
+        <i class="zmdi zmdi-plus"></i>Create</a>
+    </div>
+    <div class="table-responsive table--no-card m-b-40">
+        <table id="tbEmployee"  class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>EmployeeId</th>
+                    <th>Employee Name</th>
+                    <th>Date of birth</th>
+                    <th>Gender</th>
+                    <th>Avatar</th>
+                    <th>Created date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 </div>
-<table id="tbEmployee" class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>EmployeeId</th>
-            <th>Employee Name</th>
-            <th>Date of birth</th>
-            <th>Gender</th>
-            <th>Avatar</th>
-            <th>Created date</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-</table>
+
 <!-- Modal -->
-@*<div id="addEditdepartment" class="modal fade" role="dialog">
+<div id="addEditEmployee" class="modal fade" data-backdrop="false" role="dialog">
         <div class="modal-dialog modal-lg">
-            <form id="frmAddEditdepartment">
-                 Modal content
+            <form id="frmAddEditEmployee">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add New Department</h4>
+                        <h4 class="modal-title">Add New Employee</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                    <input hidden id="DepartmentId" name="DepartmentId">
+                    <input hidden id="EmployeeId" name="EmployeeId">
                     <div class="modal-body">
-                        <div class="row form-group">
-                            <div class="col-3">
-                                <label>Department Name</label>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row form-group">
+                                    <div class="col-12">
+                                        <img src="/images/noavatar.png" id="Avatar" width="200" height="210" />
+                                        <input type="file" id="FileUpload" class="custom-file" accept="image/*" onchange="employee.uploadAvatar(this)" />
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-9">
-                                <input type="text" id="DepartmentName" name="Department Name" class="form-control" data-rule-required="true">
+                            <div class="col-8">
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Employee Name</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="EmployeeName" name="EmployeeName" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Date of birth</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="date" id="DoB" name="DoB" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="custom-select" id="Gender" name="Gender">
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Department</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="custom-select" id="Department" name="Department">
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -55,7 +95,7 @@
                 </div>
             </form>
         </div>
-    </div>*@
+    </div>
 @section Scripts{
     <script src="~/js/employee.js" asp-append-version="true"></script>
 }

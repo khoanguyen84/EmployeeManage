@@ -1,9 +1,11 @@
-﻿using EmployeeManage.Domain.Responses;
-using EmployeeManage.Domain.Responses.Employee;
+﻿using EmployeeManage.Domain.Requests.Employee;
+using EmployeeManage.Domain.Responses.Departments;
+using EmployeeManage.Domain.Responses;
 using EmployeeManage.Web.Ultilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using EmployeeManage.Domain.Responses.Employee;
 
 namespace EmployeeManagement.Web.Controllers
 {
@@ -37,33 +39,34 @@ namespace EmployeeManagement.Web.Controllers
             return Json(new { employees });
         }
 
-        //public JsonResult Delete(int id)
-        //{
-        //    var result = new DeleteDepartmentResult();
-        //    result = ApiHelper<DeleteDepartmentResult>.HttpGetAsync(
-        //                                            $"{Helper.ApiUrl}api/department/delete/{id}",
-        //                                            "DELETE"
-        //                                        );
-        //    return Json(new { result });
-        //}
+        [Route("/Employee/Delete/{employeeId}")]
+        public JsonResult Delete(int employeeId)
+        {
+            var result = new DeleteEmployeeResult();
+            result = ApiHelper<DeleteEmployeeResult>.HttpGetAsync(
+                                                    $"{Helper.ApiUrl}api/employee/delete/{employeeId}",
+                                                    "DELETE"
+                                                );
+            return Json(new { result });
+        }
+        [Route("/Employee/Get/{employeeId}")]
+        public JsonResult Get(int employeeId)
+        {
+            var employee = new EmployeeDetail();
+            employee = ApiHelper<EmployeeDetail>.HttpGetAsync(
+                                                    $"{Helper.ApiUrl}api/employee/get/{employeeId}"
+                                                );
+            return Json(new { employee });
+        }
 
-        //public JsonResult Get(int id)
-        //{
-        //    var result = new Department();
-        //    result = ApiHelper<Department>.HttpGetAsync(
-        //                                            $"{Helper.ApiUrl}api/department/get/{id}"
-        //                                        );
-        //    return Json(new { result });
-        //}
-
-        //public JsonResult Save([FromBody] Department model)
-        //{
-        //    var result = new SaveDepartmentResult();
-        //    result = ApiHelper<SaveDepartmentResult>.HttpPostAsync(
-        //                                            $"{Helper.ApiUrl}api/department/save",
-        //                                            model
-        //                                        );
-        //    return Json(new { result });
-        //}
+        public JsonResult Save([FromBody] SaveEmployeeRequest model)
+        {
+            var result = new SaveEmployeeResult();
+            result = ApiHelper<SaveEmployeeResult>.HttpPostAsync(
+                                                    $"{Helper.ApiUrl}api/employee/save",
+                                                    model
+                                                );
+            return Json(new { result });
+        }
     }
 }

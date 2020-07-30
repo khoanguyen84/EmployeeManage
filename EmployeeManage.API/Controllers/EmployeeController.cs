@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManage.BAL.Interface;
-using EmployeeManage.Domain.Responses;
+using EmployeeManage.Domain.Requests.Employee;
 using EmployeeManage.Domain.Responses.Employee;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -41,30 +41,30 @@ namespace EmployeeManage.API.Controllers
         }
 
         /// <summary>
-        /// Get department by departmentid
+        /// Get employee by employeeId
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //[HttpGet]
-        //[Route("/api/department/get/{id}")]
-        //public async Task<Department> Get(int id)
-        //{
-        //    return await departmentService.Get(id);
-        //}
+        [HttpGet]
+        [Route("/api/employee/get/{id}")]
+        public async Task<EmployeeDetail> Get(int id)
+        {
+            return await employeeService.Get(id);
+        }
 
-        //[HttpPost]
-        //[Route("/api/department/save")]
-        //public async Task<SaveDepartmentResult> Save(Department request)
-        //{
-        //    return await departmentService.Save(request);
-        //}
+        [HttpPost]
+        [Route("/api/employee/save")]
+        public async Task<SaveEmployeeResult> Save(SaveEmployeeRequest request)
+        {
+            return await employeeService.Save(request);
+        }
 
-        //[HttpDelete]
-        //[Route("/api/department/delete/{id}")]
-        //public async Task<DeleteDepartmentResult> Delete(int id)
-        //{
-        //    return await departmentService.Delete(id);
-        //}
+        [HttpDelete]
+        [Route("/api/employee/delete/{id}")]
+        public async Task<DeleteEmployeeResult> Delete(int id)
+        {
+            return await employeeService.Delete(id);
+        }
 
         //[HttpGet("/api/department/search")]
         //public async Task<IEnumerable<Department>> Search(string keyword)

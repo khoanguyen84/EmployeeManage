@@ -8,19 +8,19 @@ home.drawTable = function () {
         success: function (data) {
             $('#tbDepart tbody').empty();
             $.each(data.departments, function (i, v) {
-                var emps = v.employees > 0 ?
-                    `<a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a>` :
-                    `${v.employees}`;
+                //var emps = v.employees > 0 ?
+                //    `<a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a>` :
+                //    `${v.employees}`;
                 $('#tbDepart tbody').append(
                     `<tr>
                         <td>${v.departmentId}</td>
                         <td>${v.departmentName}</td>
-                        <td>${emps}</td>
+                        <td><a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a></td>
                         <td>
-                            <a href="javascripts:;" class="btn btn-success"
-                                       onclick="home.get(${v.departmentId})">Edit</a> 
-                            <a href="javascripts:;" class="btn btn-danger"
-                                        onclick="home.delete(${v.departmentId})">Remove</a>
+                            <a href="javascripts:;"
+                                       onclick="home.get(${v.departmentId})" class="item"><i class="zmdi zmdi-edit"></i></a> 
+                            <a href="javascripts:;" class="item"
+                                        onclick="home.delete(${v.departmentId})"><i class="zmdi zmdi-delete"></i></a>
                         </td>
                     </tr>`
                 );
@@ -28,11 +28,11 @@ home.drawTable = function () {
         }
     });
 
-};
+}; 
 
 home.openAddEditdepartment = function () {
     home.reset();
-    $('#addEditdepartment').modal('show');
+    $('#addEditdepartment').appendTo("body").modal('show');
 };
 
 
@@ -73,7 +73,7 @@ home.get = function (id) {
         success: function (data) {
             $('#DepartmentName').val(data.result.departmentName);
             $('#DepartmentId').val(data.result.departmentId);
-            $('#addEditdepartment').modal('show');
+            $('#addEditdepartment').appendTo("body").modal('show');
         }
     });
 }

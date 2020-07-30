@@ -1,0 +1,90 @@
+﻿@using EmployeeManage.Domain.Responses.Categories
+@{
+    ViewData["Title"] = ViewBag.Title;
+    var category = ViewBag.Category != null ? ViewBag.Category as Category : new Category();
+}
+
+<div class="row">
+    <h2 class="title-1 m-b-25"><a href="/Category/Index">Category</a> &gt; @category.CategoryName</h2>
+    <input hidden id="CategoryId" value="@category.CategoryId" />
+    <div class="col-12 mb-3">
+        <a href="javascript:void(0);" class="au-btn au-btn-icon au-btn--green au-btn--small" onclick="product.openAddEditProduct()">
+        <i class="zmdi zmdi-plus"></i>Create</a>
+    </div>
+    <div class="table-responsive table--no-card m-b-40">
+        <table id="tbProduct"  class="table table-borderless table-striped table-earning">
+            <thead>
+                <tr>
+                    <th>ProductId</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="addEditProduct" class="modal fade" data-backdrop="false" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <form id="frmAddEditProduct">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Product</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <input hidden id="ProductId" name="ProductId">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="row form-group">
+                                    <div class="col-12">
+                                        <img src="/images/noimage.jpg" id="Image" width="200" height="210" />
+                                        <input type="file" id="FileUpload" class="custom-file" accept="image/*" onchange="product.uploadImage(this)" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Product Name</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" id="ProductName" name="ProductName" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Price</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="number" id="Price" name="Price" class="form-control" data-rule-required="true">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-3">
+                                        <label>Category</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <select class="custom-select" id="Category" name="Category">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                        <a href="javascript:;" class="btn btn-danger" onclick="product.save()">Save</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@section Scripts{
+    <script src="~/js/product.js" asp-append-version="true"></script>
+}

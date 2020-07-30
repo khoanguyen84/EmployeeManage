@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManage.BAL.Interface;
-using EmployeeManage.Domain.Responses;
+using EmployeeManage.Domain.Responses.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
