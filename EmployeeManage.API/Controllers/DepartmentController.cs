@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeManage.BAL.Interface;
-using EmployeeManage.Domain.Responses;
+using EmployeeManage.Domain.Responses.Departments;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -33,9 +33,42 @@ namespace EmployeeManage.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("/api/department/gets")]
-        public IEnumerable<Department> Gets()
+        public async Task<IEnumerable<Department>> Gets()
         {
-            return departmentService.Gets();
+            return await departmentService.Gets();
+        }
+
+        /// <summary>
+        /// Get department by departmentid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("/api/department/get/{id}")]
+        public async Task<Department> Get(int id)
+        {
+            return await departmentService.Get(id);
+        }
+
+        [HttpPost]
+        [Route("/api/department/save")]
+        public async Task<SaveDepartmentResult> Save(Department request)
+        {
+            return await departmentService.Save(request);
+        }
+
+        [HttpDelete]
+        [Route("/api/department/delete/{id}")]
+        public async Task<DeleteDepartmentResult> Delete(int id)
+        {
+            return await departmentService.Delete(id);
+        }
+
+        [HttpGet("/api/department/search")]
+        public async Task<IEnumerable<Department>> Search(string keyword)
+        {
+            //keyword = string.IsNullOrEmpty(keyword) ? string.Empty : keyword;
+            return  await departmentService.Search(keyword);
         }
     }
 }

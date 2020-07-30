@@ -1,0 +1,50 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    //{
+    //  "library": "jquery@3.5.1",
+    //  "destination": "wwwroot/lib/jquery/"
+    //},
+    //{
+    //  "library": "twitter-bootstrap@4.5.0",
+    //  "destination": "wwwroot/lib/bootstrap/"
+    //},
+    //{
+    //  "library": "jquery-validate@1.19.2",
+    //  "destination": "wwwroot/lib/jquery-validate/"
+    //},
+    //{
+    //  "library": "jquery-validation-unobtrusive@3.2.11",
+    //  "destination": "wwwroot/lib/validation-unobtrusive/"
+    //},
+    {
+      "library": "bootbox.js@5.4.0",
+      "destination": "wwwroot/vendor/bootbox/"
+    }
+    //{
+    //  "library": "font-awesome@5.14.0",
+    //  "destination": "wwwroot/lib/font-awesome-5/"
+    //},
+    //{
+    //  "library": "select2@4.0.13",
+    //  "destination": "wwwroot/lib/select2/"
+    //},
+    //{
+    //  "library": "material-design-iconic-font@2.2.0",
+    //  "destination": "wwwroot/lib/mdi-font/"
+    //},
+    //{
+    //  "library": "animsition@4.0.2",
+    //  "destination": "wwwroot/lib/animsition/"
+    //},
+    //{
+    //  "library": "wow@1.1.2",
+    //  "destination": "wwwroot/lib/wow/"
+    //},
+    //{
+    //  "library": "animate.css@4.1.0",
+    //  "destination": "wwwroot/lib/wow/"
+    //}
+  ]
+}

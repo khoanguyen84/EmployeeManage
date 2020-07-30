@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EmployeeManage.Domain;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,8 +12,7 @@ namespace EmployeeManage.DAL
         protected  IDbConnection conn;
         public BaseRepository()
         {
-            string connectionString = @"Data Source=admin\sqlexpress;Initial Catalog=EmployeeManageDB;Integrated Security=True";
-            conn = new SqlConnection(connectionString);
+            conn = new SqlConnection(Common.ConnectionString);
         }
     }
 }
