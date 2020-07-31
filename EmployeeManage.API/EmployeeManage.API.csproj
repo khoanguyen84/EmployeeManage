@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200730025441_initIdentityDb.cs" />
-    <Compile Remove="Migrations\20200730025441_initIdentityDb.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.6">
@@ -30,10 +25,6 @@
     <ProjectReference Include="..\EmployeeManage.DAL.Interface\EmployeeManage.DAL.Interface.csproj" />
     <ProjectReference Include="..\EmployeeManage.DAL\EmployeeManage.DAL.csproj" />
     <ProjectReference Include="..\EmployeeManage.Domain\EmployeeManage.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

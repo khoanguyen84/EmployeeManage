@@ -53,7 +53,7 @@ namespace EmployeeManagement.Web
                     pattern: "{controller=Employee}/{action=List}/{departId}");
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Department}/{action=Index}/{id?}");
             });
         }
     }
