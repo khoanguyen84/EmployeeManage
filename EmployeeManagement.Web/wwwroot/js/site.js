@@ -3,9 +3,22 @@ site.linkUrl = function (url) {
     window.location.href = url;
 }
 
+site.logout = function () {
+    $.ajax({
+        url: `/Account/Logout`,
+        method: "GET",
+        dataType: "json",
+        success: function (data) {
+            if (data.result) {
+                window.location.href = "/Account/Login";
+            }
+        }
+    });
+}
+
 site.initMenu = function () {
     $('.list-unstyled').append(`<li class="active">
-                            <a class="js-arrow" href="/Home/Index">
+                            <a class="js-arrow" href="/Department/Index">
                                 <i class="fas fa-tachometer-alt"></i>Department
                             </a>
                         </li>`)

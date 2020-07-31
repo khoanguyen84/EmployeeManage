@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManage.BAL.Interfac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManage.BAL", "EmployeeManage.BAL\EmployeeManage.BAL.csproj", "{E6BE7C90-7C8C-4F15-9A5F-76D1EE34924C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeManage.Web", "EmployeeManagement.Web\EmployeeManage.Web.csproj", "{43931FB5-FAFD-4E06-B5F1-F34DA34DFE32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeManage.Web", "EmployeeManagement.Web\EmployeeManage.Web.csproj", "{43931FB5-FAFD-4E06-B5F1-F34DA34DFE32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -134,7 +134,7 @@ employee.initGender = function () {
 
 employee.initDepartment = function () {
     $.ajax({
-        url: `/Home/Gets`,
+        url: `/Department/Gets`,
         method: "GET",
         dataType: "json",
         success: function (data) {

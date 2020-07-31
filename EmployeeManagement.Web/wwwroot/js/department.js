@@ -1,8 +1,8 @@
-﻿var home = {} || home;
+﻿var depart = {} || depart;
 
-home.drawTable = function () {
+depart.drawTable = function () {
     $.ajax({
-        url: "/Home/Gets",
+        url: "/Department/Gets",
         method: "GET",
         dataType: "json",
         success: function (data) {
@@ -18,9 +18,9 @@ home.drawTable = function () {
                         <td><a href="/Employee/List/${v.departmentId}" title="Employee list">${v.employees}</a></td>
                         <td>
                             <a href="javascripts:;"
-                                       onclick="home.get(${v.departmentId})" class="item"><i class="zmdi zmdi-edit"></i></a> 
+                                       onclick="depart.get(${v.departmentId})" class="item"><i class="zmdi zmdi-edit"></i></a> 
                             <a href="javascripts:;" class="item"
-                                        onclick="home.delete(${v.departmentId})"><i class="zmdi zmdi-delete"></i></a>
+                                        onclick="depart.delete(${v.departmentId})"><i class="zmdi zmdi-delete"></i></a>
                         </td>
                     </tr>`
                 );
@@ -30,13 +30,13 @@ home.drawTable = function () {
 
 }; 
 
-home.openAddEditdepartment = function () {
-    home.reset();
+depart.openAddEditdepartment = function () {
+    depart.reset();
     $('#addEditdepartment').appendTo("body").modal('show');
 };
 
 
-home.delete = function (id) {
+depart.delete = function (id) {
     bootbox.confirm({
         title: "Delete department?",
         message: "Do you want to delete this department.",
@@ -51,12 +51,12 @@ home.delete = function (id) {
         callback: function (result) {
             if (result) {
                 $.ajax({
-                    url: `/Home/Delete/${id}`,
+                    url: `/Department/Delete/${id}`,
                     method: "GET",
                     dataType: "json",
                     success: function (data) {
                         bootbox.alert(data.result.message);
-                        home.drawTable();
+                        depart.drawTable();
                     }
                 });
             }
@@ -65,9 +65,9 @@ home.delete = function (id) {
 }
 
 
-home.get = function (id) {
+depart.get = function (id) {
     $.ajax({
-        url: `/Home/Get/${id}`,
+        url: `/Department/Get/${id}`,
         method: "GET",
         dataType: "json",
         success: function (data) {
@@ -78,17 +78,17 @@ home.get = function (id) {
     });
 }
 
-home.reset = function () {
+depart.reset = function () {
     $('#DepartmentName').val("");
     $('#DepartmentId').val(0);
 }
 
-home.save = function () {
+depart.save = function () {
     var saveObj = {};
     saveObj.DepartmentName = $('#DepartmentName').val();
     saveObj.DepartmentId = parseInt($('#DepartmentId').val());
     $.ajax({
-        url: `/Home/Save/`,
+        url: `/Department/Save/`,
         method: "POST",
         dataType: "json",
         contentType: "application/json",
@@ -96,15 +96,15 @@ home.save = function () {
         success: function (data) {
             $('#addEditdepartment').modal('hide');
             bootbox.alert(data.result.message);
-            home.drawTable();
+            depart.drawTable();
         }
     });
 }
 
-home.init = function () {
-    home.drawTable();
+depart.init = function () {
+    depart.drawTable();
 };
 
 $(document).ready(function () {
-    home.init();
+    depart.init();
 });
